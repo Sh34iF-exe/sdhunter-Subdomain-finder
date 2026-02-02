@@ -80,10 +80,10 @@ SDhunter is intended for authorized security testing only.
 The author is not responsible for misuse or damage caused by this tool.
 Always ensure you have explicit permission before testing any target systems or domains.
 
-### Author
+## Author
 Sh34iF.exe
 
-### License
+## License
 MIT License
 
 ## Contribution
