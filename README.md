@@ -42,3 +42,8 @@ Install the dependency:
 ```bash
 pip install requests
 
+Clone the repository:
+
+```bash
+git clone https://github.com/Sh34iF-exe/sdhunter-Subdomain-finder.git
+cd sdhunter
