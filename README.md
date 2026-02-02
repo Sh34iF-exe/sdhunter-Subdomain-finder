@@ -30,7 +30,7 @@ SDhunter takes a **hands-on, active reconnaissance approach**:
 
 ---
 
-## Installation
+## Installation & Usage Guide
 
 ### Requirements
 
@@ -43,15 +43,13 @@ Install the dependency:
 pip install requests
 ```
 
-##Usage Guide
-
-###Clone the repository:
+### Clone the repository:
 
 ```bash
 git clone https://github.com/Sh34iF-exe/sdhunter-Subdomain-finder.git
 cd sdhunter
 ```
-###Basic Subdomain Enumeration
+### Basic Subdomain Enumeration
 ```bash
 python sdhunter.py -d example.com -w wordlist.txt
 ```
@@ -76,16 +74,16 @@ For a complete and authoritative list of options, run:
 python3 sdhunter.py --help
 ```
 
-##Disclaimer
+## Disclaimer
 
 SDhunter is intended for authorized security testing only.
 The author is not responsible for misuse or damage caused by this tool.
 Always ensure you have explicit permission before testing any target systems or domains.
 
-###Author
+### Author
 Sh34iF.exe
 
-###License
+### License
 MIT License
 
 ## Contribution
