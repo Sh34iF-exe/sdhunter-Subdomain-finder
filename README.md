@@ -74,18 +74,6 @@ For a complete and authoritative list of options, run:
 python3 sdhunter.py --help
 ```
 
-## Disclaimer
-
-SDhunter is intended for authorized security testing only.
-The author is not responsible for misuse or damage caused by this tool.
-Always ensure you have explicit permission before testing any target systems or domains.
-
-## Author
-Sh34iF.exe
-
-## License
-MIT License
-
 ## Contribution
 
 Contributions are welcome and appreciated.
@@ -98,3 +86,15 @@ To contribute:
 4. Submit a pull request describing your changes
 
 Please keep contributions focused, minimal, and aligned with SDhunter’s lightweight design philosophy.
+
+## Disclaimer
+
+SDhunter is intended for authorized security testing only.
+The author is not responsible for misuse or damage caused by this tool.
+Always ensure you have explicit permission before testing any target systems or domains.
+
+## Author
+Sh34iF.exe
+
+## License
+MIT License
