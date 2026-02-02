@@ -1,5 +1,4 @@
-# SDhunter – Subdomain Enumeration Tool for Pentesters
-
+# SDhunter – The Subdomain Enumeration Tool 
 SDhunter is a lightweight and practical **subdomain enumeration tool** written in Python, designed for **penetration testers and offensive security professionals**.  
 It focuses on **DNS-based discovery**, optional **HTTP probing**, and **virtual host enumeration**, without unnecessary complexity or heavy dependencies.
 
@@ -11,10 +10,8 @@ SDhunter is built to be fast, readable, and easily extendable—ideal for reconn
 
 - DNS-based subdomain enumeration using wordlists  
 - Optional HTTP probing to identify live web services  
-- Virtual host (vhost) discovery using custom `Host` headers  
-- Clean Linux-style ASCII banner  
+- Virtual host (vhost) discovery using custom `Host` headers    
 - Output saved to a separate file  
-- Single-file implementation (easy to audit and modify)  
 - Minimal dependencies  
 
 ---
