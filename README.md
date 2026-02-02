@@ -41,9 +41,62 @@ Install the dependency:
 
 ```bash
 pip install requests
+```
 
-Clone the repository:
+##Usage Guide
+
+###Clone the repository:
 
 ```bash
 git clone https://github.com/Sh34iF-exe/sdhunter-Subdomain-finder.git
 cd sdhunter
+```
+###Basic Subdomain Enumeration
+```bash
+python sdhunter.py -d example.com -w wordlist.txt
+```
+OR
+```bash
+python3 sdhunter.py -d example.com -w wordlist.txt
+```
+This performs DNS resolution for each subdomain generated from the wordlist.
+
+## Available Command-Line Options
+
+| Option | Description |
+|--------|------------|
+| `-d, --domain` | Target domain (e.g. example.com) |
+| `-w, --wordlist` | Wordlist file for subdomain enumeration |
+| `-o, --output` | Save results to an output file |
+| `--http` | Enable HTTP probing for discovered subdomains |
+| `--vhost` | Base URL for virtual host testing |
+
+For a complete and authoritative list of options, run:
+```bash
+python3 sdhunter.py --help
+```
+
+##Disclaimer
+
+SDhunter is intended for authorized security testing only.
+The author is not responsible for misuse or damage caused by this tool.
+Always ensure you have explicit permission before testing any target systems or domains.
+
+###Author
+Sh34iF.exe
+
+###License
+MIT License
+
+## Contribution
+
+Contributions are welcome and appreciated.
+
+To contribute:
+
+1. Fork the repository
+2. Create a new branch for your feature or bug fix
+3. Commit your changes with a clear message
+4. Submit a pull request describing your changes
+
+Please keep contributions focused, minimal, and aligned with SDhunter’s lightweight design philosophy.
