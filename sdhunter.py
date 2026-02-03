@@ -1,6 +1,6 @@
 import argparse
 import socket
-#import requests
+import requests
 from datetime import datetime
 
 
@@ -22,8 +22,6 @@ def banner():
                                                     Subdomain Enumerator
                                                         - by Sh34iF.exe
 """)
-
-banner()
 
 # -------------------------
 # Output Writer
