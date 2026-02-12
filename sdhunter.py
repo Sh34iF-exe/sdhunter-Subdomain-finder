@@ -89,7 +89,8 @@ def vhost_enum(base_url, wordlist, output_file):
     write_output(output_file, "\n[Virtual Host Findings]")
     write_output(output_file, "-" * 30)
 
-    Length_tolerance = 50  # Hardcoded tolerance (in bytes)
+    length_tolerance = 50  # Hardcoded tolerance (in bytes)
+    found_any = False
     random_host = get_random_string()
 
     try: # Establish baseline response with random Host header
@@ -118,7 +119,11 @@ def vhost_enum(base_url, wordlist, output_file):
             
             length_difference = abs(current_length - baseline_length)
 
-            if (current_status != baseline_status or length_difference > Length_tolerance):
+            if (
+                current_status != baseline_status
+                or length_difference > length_tolerance
+            ):
+                found_any = True
                 result = (
                     f"{word} | Status: {current_status} | "
                     f"Length: {current_length} | "
@@ -129,6 +134,11 @@ def vhost_enum(base_url, wordlist, output_file):
 
         except requests.exceptions.RequestException:
             continue
+
+    if not found_any:
+        message = "No virtual hosts discovered."
+        print(f"[-] {message}")
+        write_output(output_file, message)
 
 
 # -------------------------
