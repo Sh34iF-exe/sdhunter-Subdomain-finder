@@ -108,7 +108,7 @@ def main():
     parser.add_argument("-w", "--wordlist", required=True, help="Wordlist file")
     parser.add_argument("-o", "--output", help="Output file to save results")
     parser.add_argument("--http", action="store_true", help="Enable HTTP probing")
-    parser.add_argument("--vhost", help="Base URL for virtual host testing (e.g. http://example.com)")
+    parser.add_argument("--vhost", help="Base IP/URL for virtual host testing (e.g. http://12.161.10.5)")
 
     args = parser.parse_args()
 
