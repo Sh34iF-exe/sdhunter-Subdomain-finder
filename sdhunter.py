@@ -89,6 +89,7 @@ def vhost_enum(base_url, wordlist, output_file):
     write_output(output_file, "\n[Virtual Host Findings]")
     write_output(output_file, "-" * 30)
 
+    Length_tolerance = 50  # Hardcoded tolerance (in bytes)
     random_host = get_random_string()
 
     try: # Establish baseline response with random Host header
@@ -107,17 +108,21 @@ def vhost_enum(base_url, wordlist, output_file):
         print("[!] Failed to establish baseline response.")
         return
 
-    for word in wordlist:
+    for word in wordlist:   #compare each word as Host header against baseline
         headers = {"Host": word}
 
         try:
             r = requests.get(base_url, headers=headers, timeout=5)
             current_status = r.status_code
             current_length = len(r.text)
+            
+            length_difference = abs(current_length - baseline_length)
 
-            if (current_status != baseline_status) or (current_length != baseline_length):
+            if (current_status != baseline_status or length_difference > Length_tolerance):
                 result = (
-                    f"{word} | Status: {current_status} | Length: {current_length}"
+                    f"{word} | Status: {current_status} | "
+                    f"Length: {current_length} | "
+                    f"Diff: {length_difference}"
                 )
                 print(f"[VHOST] Possible: {result}")
                 write_output(output_file, result)
