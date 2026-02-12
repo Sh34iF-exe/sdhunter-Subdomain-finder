@@ -1,6 +1,8 @@
 import argparse
 import socket
 import requests
+import random
+import string
 from datetime import datetime
 
 
@@ -79,22 +81,47 @@ def http_probe(subdomains, output_file):
 # -------------------------
 # Virtual Host Discovery
 # -------------------------
+def get_random_string(length=12):
+    return ''.join(random.choices(string.ascii_lowercase, k=length))
+
 def vhost_enum(base_url, wordlist, output_file):
-    print("\n[+] Virtual host discovery...\n")
+    print("\n[+] Virtual host discovery (baseline comparison)...\n")
     write_output(output_file, "\n[Virtual Host Findings]")
     write_output(output_file, "-" * 30)
 
+    random_host = get_random_string()
+
+    try: # Establish baseline response with random Host header
+        baseline_response = requests.get(
+            base_url,
+            headers={"Host": random_host},
+            timeout=5
+        )
+        baseline_status = baseline_response.status_code
+        baseline_length = len(baseline_response.text)
+
+        print(f"[INFO] Baseline Status: {baseline_status}")
+        print(f"[INFO] Baseline Length: {baseline_length}\n")
+
+    except requests.exceptions.RequestException:
+        print("[!] Failed to establish baseline response.")
+        return
+
     for word in wordlist:
-        headers = {
-            "Host": word
-        }
+        headers = {"Host": word}
 
         try:
             r = requests.get(base_url, headers=headers, timeout=5)
-            if r.status_code != 404 and len(r.text) > 0:
-                result = f"Possible virtual host: {word}"
-                print(f"[VHOST] {result}")
+            current_status = r.status_code
+            current_length = len(r.text)
+
+            if (current_status != baseline_status) or (current_length != baseline_length):
+                result = (
+                    f"{word} | Status: {current_status} | Length: {current_length}"
+                )
+                print(f"[VHOST] Possible: {result}")
                 write_output(output_file, result)
+
         except requests.exceptions.RequestException:
             continue
 
